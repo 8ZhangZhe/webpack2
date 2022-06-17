@@ -2,6 +2,8 @@ const { join } = require("path");
 // 引入自动生成 html 的插件
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
+const { VueLoaderPlugin } = require('vue-loader')
+
 module.exports = {
   mode: "development",
   entry: "./src/main.js", // 入口
@@ -11,6 +13,8 @@ module.exports = {
     clean: true,
   },
   plugins: [
+    // 请确保引入这个插件！
+    new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
       // 建议是绝对路径
       template: join(__dirname, "public/index.html"),
@@ -58,6 +62,10 @@ module.exports = {
         }, */
         use: ["babel-loader"],
       },
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader'
+      }
     ],
   },
 };

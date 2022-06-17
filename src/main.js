@@ -24,3 +24,5 @@ const fn = () => {
   console.log('哈哈');
 }
 fn()
+
+import APP from './app.vue'
