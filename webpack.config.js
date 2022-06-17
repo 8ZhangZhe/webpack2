@@ -18,18 +18,38 @@ module.exports = {
   ],
   devServer: {
     port: 30000, // 端口号
-    open: true
+    open: true,
   },
   module: {
     rules: [
-        {
-            test: /\.css$/i,
-            use: [ "style-loader", "css-loader"]
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
+      },
+      {
+        test: /\.less$/i,
+        use: ["style-loader", "css-loader", "less-loader"],
+      },
+      {
+        test: /\.(png|jpg|gif|jpeg)$/i,
+        type: "asset",
+        parser: {
+          dataUrlCondition: {
+            //字节
+            maxSize: 2 * 1024,
+          },
         },
-        {
-            test: /\.less$/i,
-            use: ["style-loader", "css-loader","less-loader"]
-        }
-    ]
-  }
+        generator: {
+          filename: "images/[hash:6][ext]",
+        },
+      },
+      {
+        test: /\.(eot|svg|ttf|woff|woff2)$/i,
+        type: 'asset/resource',
+    generator: {
+    	filename: 'fonts/[hash:6][ext]'
+    }
+      }
+    ],
+  },
 };
