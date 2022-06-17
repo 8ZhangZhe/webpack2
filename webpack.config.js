@@ -45,11 +45,19 @@ module.exports = {
       },
       {
         test: /\.(eot|svg|ttf|woff|woff2)$/i,
-        type: 'asset/resource',
-    generator: {
-    	filename: 'fonts/[hash:6][ext]'
-    }
-      }
+        type: "asset/resource",
+        generator: {
+          filename: "fonts/[hash:6][ext]",
+        },
+      },
+      {
+        test: /\.js$/i,
+        /* loader: "babel-loader",
+        options: {
+          presets: ["@babel/preset-env"],
+        }, */
+        use: ["babel-loader"],
+      },
     ],
   },
 };
