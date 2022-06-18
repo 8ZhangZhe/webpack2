@@ -4,6 +4,8 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const { VueLoaderPlugin } = require('vue-loader')
 
+const EslintWebpackPlugin = require('eslint-webpack-plugin')
+
 module.exports = {
   mode: "development",
   entry: "./src/main.js", // 入口
@@ -19,6 +21,10 @@ module.exports = {
       // 建议是绝对路径
       template: join(__dirname, "public/index.html"),
     }),
+    new EslintWebpackPlugin({
+      // 你要检查哪个文件夹的代码
+      context:join(__dirname, 'src/')
+    })
   ],
   devServer: {
     port: 30000, // 端口号

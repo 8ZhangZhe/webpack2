@@ -25,4 +25,7 @@ const fn = () => {
 }
 fn()
 
-import APP from './app.vue'
+import App from './app.vue'
+
+console.log(App);
+// let a = 1
